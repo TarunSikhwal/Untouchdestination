@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<!-- saved from url=(0047)https://bookthehsrp.in/hsrp/booking/booking.php -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta property="og:title" content="Booking Details">
+    <meta property="og:type" content="website">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="./booking.php_files/bootstrap.bundle.min.js.download" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <style>
+    * { box-sizing: border-box; } 
+    body { background-color: #f1f1f1; } 
+    #regForm { background-color: #ffffff; margin: 100px auto; font-family: Raleway; padding: 40px; width: 55%; min-width: 300px; } 
+    h2 { text-align: center;color:cornflowerblue; } 
+    input,select { padding: 10px; width: 100%; font-size: 17px; font-family: Raleway; border: 1px solid #aaaaaa; } 
+    /* Mark input boxes that gets an error on validation: */ 
+    input.invalid { background-color: #ffdddd; } /* Hide all steps by default: */ 
+    /* .tab { display: none; }  */
+    button { background-color: #04AA6D; color: #ffffff; border: none; padding: 10px 20px; font-size: 17px; font-family: Raleway; cursor: pointer; } 
+    button:hover { opacity: 0.8; } 
+    #prevBtn { background-color: #bbbbbb; } /* Make circles that indicate the steps of the form: */ 
+    .step { height: 15px; width: 15px; margin: 0 2px; background-color: #bbbbbb; border: none; border-radius: 50%; display: inline-block; opacity: 0.5; } 
+    .step.active { opacity: 1; } /* Mark the steps that are finished and valid: */ .step.finish { background-color: #04AA6D; }
+    input[type="radio"] { appearance: none; background-color: #fff; margin: 0; font: inherit; color: currentColor; width: 1.15em; height: 1.15em; border: 0.15em solid currentColor; border-radius: 50%; }
+    input[type='radio']:checked:after { width: 15px; height: 15px; border-radius: 15px; top: -7px; left: -8px; position: relative; background-color: #0014ff; content: ''; display: inline-block; visibility: visible; }
+    .form-control + .form-control {
+      margin-top: 1em;
+    }
+    input[type="radio"]:focus {
+      outline: max(2px, 0.15em) solid currentColor;
+      outline-offset: max(2px, 0.15em);
+    }
+    .form-control:focus-within {
+      color: var(--form-control-color);
+    }
+    /* Chrome, Safari, Edge, Opera */
+    input::-webkit-outer-spin-button,
+    input::-webkit-inner-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+    }
+    /* Firefox */
+    input[type=number] {
+      -moz-appearance: textfield;
+    }
+    </style>
+  </head>
+<body>
+<form id="regForm" action="https://bookthehsrp.in/hsrp/booking/preview.php" method="POST">
+    <input type="hidden" value="577743050" name="randcheck">
+  <h2>ENTER YOUR BOOKING DETAILS</h2>
+  <!-- One "tab" for each step in the form: -->
+  <div class="tab">
+    <h3><b>Owner Details:</b></h3>
+    Name:<p><input type="text" placeholder="Enter your name" class="" name="name" id="name" required=""></p>
+    Contact Number:<p><input type="number" placeholder="Enter your contact number" class="" name="contact_no" id="contact_no" required=""></p>
+    Email:<p><input type="email" placeholder="Enter your email address" class="" name="email" id="email" required=""></p>
+    Address:<p><input type="text" placeholder="Enter your address" class="" name="address" id="address" required=""></p>
+    District:<p><input type="text" placeholder="Enter your district" class="" name="district" id="district" required=""></p>
+    State:<p><input type="text" placeholder="Enter your state" class="" name="state" id="state" required=""></p>
+    Pin-code:<p><input type="number" placeholder="Enter your pin-code" class="" name="pincode" id="pincode" required=""></p>
+  
+    <h3><b>Vehicle Details:</b></h3>
+    Vehicle type:<p>
+      <select class="" name="vehicle_type" id="vehicle_type" required="">
+        <option value="">Select vehicle type</option>
+        <option value="2_wheeler">2-wheeler</option>
+        <option value="3_wheeler">3-wheeler</option>
+        <option value="4_wheeler">4-wheeler</option>
+        <option value="heavy_duty">Heavy-Duty</option>
+      </select>
+    </p>
+    Vehicle Brand:<p></p><div id="vehicle_brand_div"><select oninput="this.className=" '="" name="vehicle_brand" id="vehicle_brand" required=""><option value="">Select vehicle brand</option></select></div><p></p>
+    Vehicle Fuel:<p>
+      <select class="" name="vehicle_fuel" id="vehicle_fuel" required="">
+        <option value="">Select vehicle fuel</option>
+        <option value="Petrol">Petrol</option>
+        <option value="Diseal">Diseal</option>
+        <option value="CNG">CNG</option>
+      </select>
+    </p>
+    Vehicle Model:<p><input type="text" placeholder="Enter your vehicle model" class="" name="vehicle_model" id="vehicle_model" required=""></p>
+
+  
+    <h3><b>Vehicle Registration info:</b></h3>
+    Registration Number:
+    <p>
+      <input placeholder="Enter vehicle registration number" class="" name="registration_number" id="registration_number" required="">
+      <lable id="r_no_error" style="color:red;display:none">This vehicle number already registred! Please try with another!</lable>
+    </p>
+    Engine Number:<p><input placeholder="Enter engine number" class="" name="engine_number" required=""></p>
+    Chassis Number:<p><input placeholder="Enter chassis number" class="" name="chassis_number" required=""></p>
+    Registered State:<p>
+    <select id="registered_state" name="registered_state" required="" class="">
+      <option value="Uttar Pradesh">Uttar Pradesh</option>
+      <option value="Delhi">Delhi</option>
+      <option value="Maharastra">Maharastra</option>
+      <option value="Jammu &amp; Kashmir">Jammu &amp; Kashmir</option>
+      <option value="Madhya Pradesh">Madhya Pradesh</option>
+    </select>
+  </p>
+  
+    <h3><b>Appointment Details:</b></h3>
+
+    
+    Date:<p><input type="date" placeholder="Select appointment date" class="" name="appointment_date" id="appointment_date" value="" required="" min="2022-05-27"></p>
+    Time:<p><input type="time" placeholder="Select appointment time" class="" name="appointment_time" value="" required=""></p>
+    Referal ID:<p><input type="text" placeholder="Enter referal id" name="referal_id" id="referal_id" class=""></p>
+    Branch:<p>
+      <select name="branch_id" id="branch_id" required="" class="">
+        <option value="">Select branch</option><option value="3">agra 23</option><option value="4">Laxmikant tripathi</option><option value="12">Shivam Verma</option><option value="13">Vivek Singh</option><option value="14">Bhupendra Singh</option><option value="25">Mahaveer</option><option value="31">Anuvendra singh</option><option value="33">Praveen Kumar Sharma</option><option value="34">Dushyant Verma Matthan</option><option value="35">Kapil Verma</option><option value="36">Gopal Verma</option><option value="37">RAMPRATAP SINGH CHAUHAN</option><option value="38">Lajpat nagar 01</option><option value="39">Rajesh Dubey</option><option value="46">Laxman Gola</option><option value="47">Natasha Godre</option><option value="49">Shah alam</option><option value="52">Kushagra enterprises</option><option value="53">Balwant</option><option value="54">Rahul madhuriya</option><option value="58">Pradeep kumar</option><option value="59">Rishikesh</option><option value="60">Praveen kumar</option><option value="61">FAINS BAZAAR PRIVATE LIMITED</option><option value="62">PREM DUTT SHARMA</option><option value="63">KULDEEP SHARMA</option><option value="64">MOHD. ASIF KHAN</option><option value="65">AKHTAR ALI</option>      </select>
+    </p>
+    <p>
+      <input type="radio" name="fitment" value="1" checked=""> <lable>Add Fitment Charges</lable>
+      <br><br>
+      <input type="radio" name="fitment" value="0"> <lable>Do Not Add Fitment Charges</lable>
+    </p>
+  </div>
+  <div style="overflow:auto;">
+    <div style="float:right;">
+      <button type="submit">Submit</button>
+    </div>
+  </div>
+</form>
+<script src="./booking.php_files/jquery.min.js.download"></script>
+<script>
+  
+$(document).ready(function(){
+
+  $('#regForm').on('submit', function(e){
+    $('#r_no_error').hide();
+    var valid = false;
+    e.preventDefault();
+
+    var registration_number= $('#registration_number').val();
+    if(registration_number!='')
+    {
+      //console.log(registration_number);
+      $('#registration_number').addClass(" invalid");
+      $.ajax({
+          url: 'registration_no_validate.php',
+          async: false, 
+          type: 'POST',
+          data: {'r_no': registration_number},
+          dataType: 'json',
+          success: function(response){
+            console.log(response);
+            if(response==1){
+              $('#r_no_error').show();
+              $('html, body').animate({
+                  scrollTop: $("#registration_number").offset().top
+              }, 1000);
+              valid = false;
+            } else{
+              $('#r_no_error').hide();
+              valid = true;
+            }
+          }
+      });
+    }
+    // var contact_no = $('#contact_no').val();
+    // var filter = /^((\+[1-9]{1,4}[ \-]*)|(\([0-9]{2,3}\)[ \-]*)|([0-9]{2,4})[ \-]*)*?[0-9]{3,4}?[ \-]*[0-9]{3,4}?$/;
+    // if (filter.test(contact_no)) {
+    //     valid = true;
+    // } else {
+    //     $('#contact_no').addClass(" invalid");
+    //     valid = false;
+    // }
+
+    // var email = $('#email').val();
+    // var email_regex = /^([a-zA-Z0-9_\.\-\+])+\@(([a-zA-Z0-9\-])+\.)+([a-zA-Z0-9]{2,4})+$/;
+    // if(email_regex.test(email)) {
+    //     valid = true;
+    // } else {
+    //     $('#email').addClass(" invalid");
+    //     valid = false;
+    // }
+    if(valid)
+    {
+      this.submit();
+    }
+    else{
+      return false;
+    }
+  });
+});
+
+
+$( document ).ready(function() {
+  $('#vehicle_brand_div').html("<select oninput='this.className='' name='vehicle_brand' id='vehicle_brand' required><option value=''>Select vehicle brand</option></select>");
+  $("#vehicle_type").change(function() {
+      var vehicle_type = $('#vehicle_type').val();
+      if(vehicle_type=='2_wheeler'){
+        $('#vehicle_brand_div').html("<select oninput='this.className = '' name='vehicle_brand' id='vehicle_brand' required>"+
+          "<option value=''>Select vehicle brand</option>"+
+          "<option value='Hero'>Hero</option>"+
+          "<option value='Honda'>Honda</option>"+
+          "<option value='Royal Enfield'>Royal Enfield</option>"+
+          "<option value='Bajaj'>Bajaj</option>"+
+          "<option value='KTM'>KTM</option>"+
+          "<option value='Yahama'>Yahama</option>"+
+          "<option value='Kawasaki'>Kawasaki</option>"+
+          "<option value='TVS'>TVS</option>"+
+          "</select>");
+      } else if(vehicle_type=='3_wheeler') {
+        $('#vehicle_brand_div').html("<input type='text' placeholder='Enter your vehicle brand'  name='vehicle_brand' id='vehicle_brand' required/>");
+      } else if(vehicle_type=='4_wheeler') {
+        $('#vehicle_brand_div').html("<select oninput='this.className='' name='vehicle_brand' id='vehicle_brand' required>"+
+          "<option value=''>Select vehicle brand</option>"+
+          "<option value='Maruti Suzuki'>Maruti Suzuki</option>"+
+          "<option value='Ford'>Ford</option>"+
+          "<option value='Honda'>Honda</option>"+
+          "<option value='Hyundai'>Hyundai</option>"+
+          "<option value='Toyata'>Toyata</option>"+
+          "<option value='Mahindra'>Mahindra</option>"+
+          "<option value='Audi'>Audi</option>"+
+          "<option value='BMW'>BMW</option>"+
+          "<option value='Tata'>Tata</option>"+
+          "<option value='Renault'>Renault</option>"+
+          "</select>");
+      } else if(vehicle_type=='heavy_duty') {
+        $('#vehicle_brand_div').html("<input type='text' placeholder='Enter your vehicle brand' name='vehicle_brand' id='vehicle_brand' required/>");
+      }
+  });
+});
+
+$( document ).ready(function() {
+  var today = new Date();
+  var dd = today.getDate();
+  var mm = today.getMonth()+1; //January is 0!
+  var yyyy = today.getFullYear();
+  if(dd<10){ dd='0'+dd } 
+  if(mm<10){ mm='0'+mm } 
+  today = yyyy+'-'+mm+'-'+dd;
+  document.getElementById("appointment_date").setAttribute("min", today);
+});
+</script>
+
+</body></html>
